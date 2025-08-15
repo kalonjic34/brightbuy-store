@@ -1,11 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-</head>
-<body>
-    <h1>This is my store</h1>
-</body>
-</html>
+{% extends "./base.html" %}
+{% load static %}
+
+{% block content %}
+
+  
+    <section class="py-4 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">   
+
+                <h4> BrightBuy... Shop smart, live simple.</h4>
+
+                <br>      
+
+                <p class="lead text-muted">
+
+                Explore our curated product collections.
+
+                </p>
+                <br>
+        
+                <a href="#" class="btn btn-primary my-2">Set Up Account</a>           
+                
+            </div>
+        
+        </div>
+
+    </section>
+
+{% endblock %}
