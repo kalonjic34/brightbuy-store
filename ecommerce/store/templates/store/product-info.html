@@ -67,16 +67,16 @@
 
 </div>
 
-<script src="">
+<script>
     $(document).on('click','#submit-add-button', function(e){
-        e.preventDefault():
+        e.preventDefault();
         $.ajax({
 
             type:'POST',
             url: '{% url "cart-add" %}',
             data: {
                 product_id: $('#submit-add-button').val(),
-                product_quantity: $('#select option:selected').text(),
+                product_quantity: $('#select').val(),
                 csrfmiddlewaretoken: "{{csrf_token}}",
                 action: 'post'
             },
