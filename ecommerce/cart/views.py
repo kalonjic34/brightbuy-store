@@ -41,7 +41,19 @@ def cart_delete(request):
         
         return JsonResponse({'qty':cart_quantity, 'total':cart_total})
     
-
+    
 def cart_update(request):
-    pass
+    cart = Cart(request)
+    if request.POST.get('action') == 'post':
+        product_id = int(request.POST.get('product_id'))
+        product_quantity = request.POST.get('product_quantity')
+        try:
+            product_quantity = int(product_quantity)
+        except (TypeError, ValueError):
+            return JsonResponse({'error': 'Invalid quantity'}, status=400)
+        cart.update(product=product_id, qty=product_quantity)
+        cart_quantity = cart.__len__()
+        cart_total = cart.get_total()
+        return JsonResponse({'qty': cart_quantity, 'total': cart_total})
+    
 
