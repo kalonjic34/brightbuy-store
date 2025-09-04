@@ -80,8 +80,15 @@ def my_login(request):
 def dashboard(request):
     return render(request, 'account/dashboard.html')
 
-def user_logout(request):
-    auth.logout(request)
+def user_logout(request):    
+    try:
+        for key in list(request.session.keys()):
+            if key == 'session-key':
+                continue
+            else:
+                del request.session[key]
+    except KeyError:
+        pass
     return redirect("store")
     
 @login_required(login_url='my-login')
